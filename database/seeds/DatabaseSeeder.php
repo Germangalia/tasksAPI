@@ -1,8 +1,14 @@
 <?php
 
+use App\Tag;
+use App\Task;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
+
+/**
+ * Class DatabaseSeeder
+ */
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -16,6 +22,44 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(UserTableSeeder::class);
 
+        $faker = Faker\Factory::create();
+        $this->seedTasks($faker);
+        $this->seedTags($faker);
+
         Model::reguard();
+    }
+
+    /**
+     * @param Faker $faker
+     */
+    private function seedTasks($faker)
+    {
+        foreach (range(0,100) as $number) {
+
+            $task = new Task();
+
+            $task->name = $faker->sentence;
+            $task->done = $faker->boolean;
+            $task->priority = $faker->randomDigit;
+
+            $task->save();
+
+        }
+    }
+
+    /**
+     * @param Faker $faker
+     */
+    private function seedTags($faker)
+    {
+        foreach (range(0,100) as $number) {
+
+            $tag = new Tag();
+
+            $tag->name = $faker->word;
+
+            $tag->save();
+        }
+
     }
 }
