@@ -23,7 +23,7 @@ class TaskController extends Controller
         $lesson = Task::all();
 
         return Response::json([
-            'data' => $this->transition($lesson)
+            'data' => $this->transformCollection($lesson)
         ], 200);
     }
 
@@ -67,7 +67,7 @@ class TaskController extends Controller
             ], 400);
         }
         return Response::json([
-            'data' =>$lesson->toArray()
+            'data' =>$this->transform($lesson->toArray())
         ], 200);
     }
 
@@ -107,15 +107,19 @@ class TaskController extends Controller
        Task::destroy($id);
     }
 
-    public function transforme($lesson)
+    public function transformCollection($lesson){
+        return array_map([$this, 'transform'], $lesson->toArray());
+    }
+
+    public function transform($lesson)
     {
-        return array_map(function($lesson) {
+        return array_map([$this, 'transform'], function($lesson) {
             return [
                 'name' => $lesson['name'],
                 'done' => $lesson['done'],
                 'priority' => $lesson['priority']
             ];
-        }, $lesson->toArray());
+        });
 
     }
 
