@@ -23,7 +23,7 @@ class TaskController extends Controller
         $lesson = Task::all();
 
         return Response::json([
-            'data' =>$lesson->toArray()
+            'data' => $this->transition($lesson)
         ], 200);
     }
 
@@ -104,7 +104,19 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        Task::destroy($id);
+       Task::destroy($id);
+    }
+
+    public function transforme($lesson)
+    {
+        return array_map(function($lesson) {
+            return [
+                'name' => $lesson['name'],
+                'done' => $lesson['done'],
+                'priority' => $lesson['priority']
+            ];
+        }, $lesson->toArray());
+
     }
 
     /**

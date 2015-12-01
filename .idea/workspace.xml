@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3edc0c92-90ee-4ebb-aee6-97b6500a267f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_11_24_192049_create_tags_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_11_24_192049_create_tags_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
     </list>
     <ignored path="tasksAPI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/database/migrations/2015_11_24_192042_create_tasks_table.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-10.0">
-              <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -38,10 +39,22 @@
       <file leaf-file-name="2015_11_24_192049_create_tags_table.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database/migrations/2015_11_24_192049_create_tags_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.0">
-              <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+            <state vertical-scroll-proportion="-6.875">
+              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
               <folding>
                 <element signature="e#7#48#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseSeeder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.541666">
+              <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+              <folding>
+                <element signature="e#7#19#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,8 +73,8 @@
       <file leaf-file-name="TaskController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6456241">
-              <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.80631274">
+              <caret line="119" column="5" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
               <folding>
                 <element signature="e#40#53#0#PHP" expanded="true" />
               </folding>
@@ -91,12 +104,12 @@
       <list>
         <option value="$PROJECT_DIR$/database/migrations/2015_11_24_192042_create_tasks_table.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2015_11_24_192049_create_tags_table.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TagController.php" />
+        <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2015_11_24_192049_create_tags_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" />
       </list>
     </option>
@@ -276,7 +289,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="data&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/database/seeds/DatabaseSeeder.php&#10;routes&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/app/Http/routes.php&#10;kernel&#9;null&#9;null&#10;kerne&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/vendor/symfony/http-kernel/Kernel.php&#10;tagco&#9;null&#9;null&#10;task&#9;null&#9;null&#10;rou&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/app/Http/routes.php&#10;.en&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/.env&#10;app.&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/config/app.php&#10;app.p&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/bootstrap/app.php" />
+    <property name="SearchEverywhereHistoryKey" value="dat&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/database/seeds/DatabaseSeeder.php&#10;data&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/database/seeds/DatabaseSeeder.php&#10;routes&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/app/Http/routes.php&#10;kernel&#9;null&#9;null&#10;kerne&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/vendor/symfony/http-kernel/Kernel.php&#10;tagco&#9;null&#9;null&#10;task&#9;null&#9;null&#10;rou&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/app/Http/routes.php&#10;.en&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/.env&#10;app.&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/config/app.php&#10;app.p&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/bootstrap/app.php" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Auth" />
   </component>
   <component name="RestClientSettings">
@@ -471,14 +484,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2015_11_24_192042_create_tasks_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -541,18 +546,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06896552">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        <state vertical-scroll-proportion="-16.541666">
+          <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
           <folding>
             <element signature="e#7#19#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2015_11_24_192042_create_tasks_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2015_11_24_192049_create_tags_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0">
-          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+        <state vertical-scroll-proportion="-6.875">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
           <folding>
             <element signature="e#7#48#0#PHP" expanded="true" />
           </folding>
@@ -561,8 +574,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6456241">
-          <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.80631274">
+          <caret line="119" column="5" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
           <folding>
             <element signature="e#40#53#0#PHP" expanded="true" />
           </folding>
