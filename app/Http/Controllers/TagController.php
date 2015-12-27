@@ -11,6 +11,16 @@ use Response;
 
 class TagController extends Controller
 {
+
+    /**
+     * TaskController constructor.
+     */
+    public function __construct()
+    {
+        $this->beforeFilters('auth.basic', ['on' => 'post']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -45,9 +55,18 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $tag = new Tag();
+//        $tag = new Tag();
+//
+//        $this->saveTag($request, $tag);
 
-        $this->saveTag($request, $tag);
+        if (! Input::get('name') or ! Input::get('done'))
+        {
+            return $this->setStatusCode(422)->respondWithError('Parameters failed validation for a tag.');
+        }
+
+        Tag::create(Input::all());
+
+        return $this->respondCreated('Tag successfully created.');
     }
 
     /**
@@ -134,5 +153,16 @@ class TagController extends Controller
         $tag->done = $request->done;
 
         $tag->save();
+    }
+
+    /**
+     * @param $message
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function respondCreated($message)
+    {
+        return $this->setStatusCode(201)->respond([
+            'message' => $message
+        ]);
     }
 }

@@ -7,10 +7,21 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Response;
 
 class TaskController extends Controller
 {
+
+    /**
+     * TaskController constructor.
+     */
+    public function __construct()
+    {
+        $this->beforeFilters('auth.basic', ['on' => 'post']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -45,9 +56,18 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = new Task();
+//        $task = new Task();
+//
+//        $this->saveTask($request, $task);
 
-        $this->saveTask($request, $task);
+        if (! Input::get('name') or ! Input::get('done') or ! Input::get('priority'))
+        {
+            return $this->setStatusCode(422)->respondWithError('Parameters failed validation for a task.');
+        }
+
+        Task::create(Input::all());
+
+        return $this->respondCreated('Task successfully created.');
     }
 
     /**
@@ -137,5 +157,16 @@ class TaskController extends Controller
         $task->priority = $request->priority;
 
         $task->save();
+    }
+
+    /**
+     * @param $message
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function respondCreated($message)
+    {
+        return $this->setStatusCode(201)->respond([
+            'message' => $message
+        ]);
     }
 }
