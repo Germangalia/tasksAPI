@@ -22,7 +22,7 @@ class TaskController extends Controller
 
         $lesson = Task::all();
 
-        return Response::json([
+        return $this->respond([
             'data' => $this->transformCollection($lesson)
         ], 200);
     }
@@ -59,16 +59,19 @@ class TaskController extends Controller
     public function show($id)
     {
         $lesson = Task::find($id);
-        if(! $lesson){
-            return Response::json([
-                'error' => [
-                    'message' => 'Task does not exist'
-                ]
-            ], 400);
+        if(! $lesson)
+        {
+            return $this->respondNotFound('Task does not exist.');
+//            return $this->respondWithError(404, 'Task does not exist');
+//            return Response::json([
+//                'error' => [
+//                    'message' => 'Task does not exist'
+//                ]
+//            ], 404);
         }
-        return Response::json([
+        return $this->respond([
             'data' =>$this->transform($lesson->toArray())
-        ], 200);
+        ]);
     }
 
     /**

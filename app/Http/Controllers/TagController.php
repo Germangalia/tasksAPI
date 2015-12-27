@@ -22,7 +22,7 @@ class TagController extends Controller
 
         $lesson = Tag::all();
 
-        return Response::json([
+        return $this->respond([
             'data' => $this->transformCollection($lesson)
         ], 200);
     }
@@ -59,16 +59,18 @@ class TagController extends Controller
     public function show($id)
     {
         $lesson = Tag::find($id);
-        if(! $lesson){
-            return Response::json([
-                'error' => [
-                    'message' => 'Tag does not exist'
-                ]
-            ], 400);
+        if(! $lesson)
+        {
+            return $this->respondNotFound('Task does not exist.');
+//            return Response::json([
+//                'error' => [
+//                    'message' => 'Tag does not exist'
+//                ]
+//            ], 404);
         }
-        return Response::json([
+        return $this->respond([
             'data' =>$this->transform($lesson->toArray())
-        ], 200);
+        ]);
     }
 
     /**

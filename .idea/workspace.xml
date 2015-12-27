@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3edc0c92-90ee-4ebb-aee6-97b6500a267f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TagController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TagController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" />
     </list>
     <ignored path="tasksAPI.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,8 +73,8 @@
       <file leaf-file-name="TaskController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.375">
-              <caret line="93" column="38" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+            <state vertical-scroll-proportion="-20.625">
+              <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="66" />
               <folding>
                 <element signature="e#40#53#0#PHP" expanded="true" />
               </folding>
@@ -81,11 +82,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TagController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Controller.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5314286">
+              <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TagController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TagController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.61142856">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state vertical-scroll-proportion="-25.0">
+              <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
               <folding>
                 <element signature="e#40#52#0#PHP" expanded="true" />
               </folding>
@@ -110,6 +121,7 @@
         <option value="$PROJECT_DIR$/database/migrations/2015_11_24_192049_create_tags_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TagController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
       </list>
     </option>
   </component>
@@ -282,6 +294,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="SearchEverywhereHistoryKey" value="config/data&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/config/database.php&#10;composer&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/composer.json&#10;dat&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/database/seeds/DatabaseSeeder.php&#10;data&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/database/seeds/DatabaseSeeder.php&#10;routes&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/app/Http/routes.php&#10;kernel&#9;null&#9;null&#10;kerne&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/vendor/symfony/http-kernel/Kernel.php&#10;tagco&#9;null&#9;null&#10;task&#9;null&#9;null&#10;rou&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/app/Http/routes.php&#10;.en&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/.env&#10;app.&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/config/app.php&#10;app.p&#9;FILE&#9;file:///home/ggalia84/Code/laravels/tasksAPI/bootstrap/app.php" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Presentations/PresentacioGerman" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
@@ -308,6 +321,31 @@
         </RestClientRequest>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -626,14 +664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2015_11_24_192042_create_tasks_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.75">
@@ -672,8 +702,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaskController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.375">
-          <caret line="93" column="38" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+        <state vertical-scroll-proportion="-20.625">
+          <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="66" />
           <folding>
             <element signature="e#40#53#0#PHP" expanded="true" />
           </folding>
@@ -682,11 +712,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TagController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.61142856">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state vertical-scroll-proportion="-25.0">
+          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
           <folding>
             <element signature="e#40#52#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5314286">
+          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
