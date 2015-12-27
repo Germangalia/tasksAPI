@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Response;
 
 class TagController extends Controller
 {
@@ -18,7 +19,12 @@ class TagController extends Controller
     public function index()
     {
         //No es retorna tot: paginació
-        return Tag::all();
+
+        $lesson = Tag::all();
+
+        return Response::json([
+            'data' => $this->transformCollection($lesson)
+        ], 200);
     }
 
     /**
@@ -52,7 +58,17 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        return Tag::findOrFail($id);
+        $lesson = Tag::find($id);
+        if(! $lesson){
+            return Response::json([
+                'error' => [
+                    'message' => 'Tag does not exist'
+                ]
+            ], 400);
+        }
+        return Response::json([
+            'data' =>$this->transform($lesson->toArray())
+        ], 200);
     }
 
     /**
@@ -91,6 +107,21 @@ class TagController extends Controller
         Tag::destroy($id);
     }
 
+    public function transformCollection($lesson){
+        return array_map([$this, 'transform'], $lesson->toArray());
+    }
+
+    public function transform($lesson)
+    {
+        return array_map([$this, 'transform'], function($lesson) {
+            return [
+                'name' => $lesson['name'],
+                'done' => $lesson['done']
+            ];
+        });
+
+    }
+
     /**
      * @param Request $request
      * @param $tag
@@ -98,6 +129,7 @@ class TagController extends Controller
     public function saveTag(Request $request, $tag)
     {
         $tag->name = $request->name;
+        $tag->done = $request->done;
 
         $tag->save();
     }
