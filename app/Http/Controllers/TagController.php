@@ -17,7 +17,8 @@ class TagController extends Controller
      */
     public function __construct()
     {
-        $this->beforeFilters('auth.basic', ['on' => 'post']);
+//        $this->beforeFilters('auth.basic', ['on' => 'post']);
+        $this->middleware('auth.basic', ['only' => 'store']);
     }
 
 
@@ -132,14 +133,14 @@ class TagController extends Controller
         return array_map([$this, 'transform'], $lesson->toArray());
     }
 
-    public function transform($lesson)
+    public function transform($tag)
     {
-        return array_map([$this, 'transform'], function($lesson) {
-            return [
-                'name' => $lesson['name'],
-                'done' => $lesson['done']
-            ];
-        });
+        return[
+
+            'name' => $tag['name'],
+            'done' => (boolean) $tag['done'],
+        ];
+
 
     }
 

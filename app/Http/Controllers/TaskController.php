@@ -18,7 +18,8 @@ class TaskController extends Controller
      */
     public function __construct()
     {
-        $this->beforeFilters('auth.basic', ['on' => 'post']);
+//        $this->beforeFilters('auth.basic', ['on' => 'post']);
+        $this->middleware('auth.basic', ['only' => 'store']);
     }
 
 
@@ -31,10 +32,10 @@ class TaskController extends Controller
     {
         //No es retorna tot: paginació
 
-        $lesson = Task::all();
+        $task = Task::all();
 
         return $this->respond([
-            'data' => $this->transformCollection($lesson)
+            'data' => $this->transformCollection($task)
         ], 200);
     }
 
@@ -78,8 +79,8 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        $lesson = Task::find($id);
-        if(! $lesson)
+        $task = Task::find($id);
+        if(! $task)
         {
             return $this->respondNotFound('Task does not exist.');
 //            return $this->respondWithError(404, 'Task does not exist');
@@ -90,7 +91,7 @@ class TaskController extends Controller
 //            ], 404);
         }
         return $this->respond([
-            'data' =>$this->transform($lesson->toArray())
+            'data' =>$this->transform($task->toArray())
         ]);
     }
 
@@ -130,19 +131,20 @@ class TaskController extends Controller
        Task::destroy($id);
     }
 
-    public function transformCollection($lesson){
-        return array_map([$this, 'transform'], $lesson->toArray());
+    public function transformCollection($task){
+        return array_map([$this, 'transform'], $task->toArray());
     }
 
-    public function transform($lesson)
+    public function transform($task)
     {
-        return array_map([$this, 'transform'], function($lesson) {
+        return array_map(function($tasks){
+
             return [
-                'name' => $lesson['name'],
-                'done' => $lesson['done'],
-                'priority' => $lesson['priority']
-            ];
-        });
+                'name' => $tasks['name'],
+                'done' => $tasks['done'],
+                'priority' => $tasks['priority'],
+           ];
+    }, $task->toArray);
 
     }
 
