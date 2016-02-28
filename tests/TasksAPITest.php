@@ -74,7 +74,7 @@ class TasksAPITest extends TestCase
      */
     public function testTasksCanBePostedAndSavedIntoDatabase()
     {
-        $data = ['name' => 'Foobar', 'done' => 1, 'priority' => 1];
+        $data = ['name' => 'Foobar', 'done' => true, 'priority' => 1];
         $this->post('/task',$data)->seeInDatabase('tasks',$data);
         $this->get('/task')->seeJsonContains($data)->seeStatusCode(200);
     }
@@ -101,5 +101,9 @@ class TasksAPITest extends TestCase
         $data = [ 'name' => $task->name, 'done' => $task->done , 'priority' => $task->priority];
         $this->delete('/task/' . $task->id)->notSeeInDatabase('tasks',$data);
         $this->get('/task')->dontSeeJson($data)->seeStatusCode(200);
+    }
+    public function testTaskNotFoundErrorCode()
+    {
+        $this->get('/task/500000000')->seeStatusCode(404);
     }
 }

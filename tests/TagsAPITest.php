@@ -81,7 +81,7 @@ class TagsAPITest extends TestCase
     public function testTagsCanBeUpdatedAndSeeChangesInDatabase()
     {
         $tag = $this->createFakeTag();
-        $data = [ 'name' => 'Learn Laravel', 'done' => false , 'priority' => 3];
+        $data = [ 'title' => 'Learn Laravel'];
         $this->put('/tag/' . $tag->id, $data)->seeInDatabase('tags',$data);
         $this->get('/tag')->seeJsonContains($data)->seeStatusCode(200);
     }
@@ -96,5 +96,9 @@ class TagsAPITest extends TestCase
         $data = [ 'title' => $tag->title];
         $this->delete('/tag/' . $tag->id)->notSeeInDatabase('tags',$data);
         $this->get('/tag')->dontSeeJson($data)->seeStatusCode(200);
+    }
+    public function testTagNotFoundErrorCode()
+    {
+        $this->get('/tag/500000000')->seeStatusCode(404);
     }
 }
