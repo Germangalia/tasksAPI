@@ -26,9 +26,18 @@ class TasksAPITest extends TestCase
         $this->get('/task')
             ->seeJsonStructure([
                 '*' => [
-                    'name', 'done','priority'
+                    'name', 'some_bool', 'priority'
                 ]
             ])->seeStatusCode(200);
+    }
+    /**
+     * Test task Return 404 on task not exsists
+     *
+     * @return void
+     */
+    public function testTasksReturn404OnTaskNotExsists()
+    {
+        $this->get('/task/500')->seeJson()->seeStatusCode(404);
     }
     /**
      * Test task in database is shown by API
@@ -39,7 +48,7 @@ class TasksAPITest extends TestCase
     {
         $task = $this->createFakeTask();
         $this->get('/task/' . $task->id)
-            ->seeJsonContains(['name' => $task->name, 'done' => $task->done, 'priority' => $task->priority ])
+            ->seeJsonContains(['name' => $task->name, 'some_bool' => $task->done, 'priority' => $task->priority ])
             ->seeStatusCode(200);
     }
     /**
@@ -76,7 +85,7 @@ class TasksAPITest extends TestCase
     {
         $data = ['name' => 'Foobar', 'done' => true, 'priority' => 1];
         $this->post('/task',$data)->seeInDatabase('tasks',$data);
-        $this->get('/task')->seeJsonContains($data)->seeStatusCode(200);
+        $this->get('/task')->seeJsonContains(['name' => 'Foobar', 'some_bool' => true, 'priority' => 1])->seeStatusCode(200);
     }
     /**
      * Test tasks can be update and see changes on database
@@ -88,7 +97,7 @@ class TasksAPITest extends TestCase
         $task = $this->createFakeTask();
         $data = [ 'name' => 'Learn Laravel', 'done' => false , 'priority' => 3];
         $this->put('/task/' . $task->id, $data)->seeInDatabase('tasks',$data);
-        $this->get('/task')->seeJsonContains($data)->seeStatusCode(200);
+        $this->get('/task')->seeJsonContains(['name' => 'Learn Laravel', 'some_bool' => false , 'priority' => 3])->seeStatusCode(200);
     }
     /**
      * Test tasks can be deleted and not see on database
@@ -101,9 +110,5 @@ class TasksAPITest extends TestCase
         $data = [ 'name' => $task->name, 'done' => $task->done , 'priority' => $task->priority];
         $this->delete('/task/' . $task->id)->notSeeInDatabase('tasks',$data);
         $this->get('/task')->dontSeeJson($data)->seeStatusCode(200);
-    }
-    public function testTaskNotFoundErrorCode()
-    {
-        $this->get('/task/500000000')->seeStatusCode(404);
     }
 }

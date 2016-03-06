@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 
 class CreateTagsTable extends Migration
 {
@@ -15,12 +13,11 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->boolean('done');
+            $table->string('title');
+//            $table->boolean('prova');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

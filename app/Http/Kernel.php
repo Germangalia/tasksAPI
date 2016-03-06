@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http;
-
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
 class Kernel extends HttpKernel
 {
     /**
@@ -19,7 +17,6 @@ class Kernel extends HttpKernel
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
         //\App\Http\Middleware\VerifyCsrfToken::class,
     ];
-
     /**
      * The application's route middleware.
      *

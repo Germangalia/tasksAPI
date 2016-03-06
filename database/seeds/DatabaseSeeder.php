@@ -1,14 +1,8 @@
 <?php
-
 use App\Tag;
 use App\Task;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-
-
-/**
- * Class DatabaseSeeder
- */
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,48 +13,43 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
-        // $this->call(UserTableSeeder::class);
-
+//        $this->call(UserTableSeeder::class);
         $faker = Faker\Factory::create();
         $this->seedTasks($faker);
         $this->seedTags($faker);
-
+        $this->seedTaskTag($faker);
         Model::reguard();
     }
-
     /**
      * @param Faker $faker
      */
     private function seedTasks($faker)
     {
-        foreach (range(0,100) as $number) {
-
+        foreach (range(0,100) as $item) {
             $task = new Task();
-
-            $task->name = $faker->sentence;
-            $task->done = $faker->boolean;
-            $task->priority = $faker->randomDigit;
-
+            $task->name = $faker->sentence();
+            $task->done = $faker->boolean();
+            $task->priority = $faker->randomDigit();
             $task->save();
-
         }
     }
-
-    /**
-     * @param Faker $faker
-     */
     private function seedTags($faker)
     {
-        foreach (range(0,100) as $number) {
-
+        foreach (range(0,100) as $item) {
             $tag = new Tag();
-
-            $tag->name = $faker->word;
-            $tag->done = $faker->boolean;
-
+            $tag->title = $faker->word;
+//            $tag->prova = $faker->boolean();
             $tag->save();
         }
-
+    }
+    private function seedTaskTag($faker)
+    {
+        foreach (range(0,100) as $item)
+        {
+            DB::table('task_tag')->insert([
+                'task_id' => $faker->randomDigit,
+                'tag_id' => $faker->randomDigit
+            ]);
+        }
     }
 }

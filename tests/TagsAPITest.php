@@ -28,6 +28,15 @@ class TagsAPITest extends TestCase
             ])->seeStatusCode(200);
     }
     /**
+     * Test tag Return 404 on tag not exsists
+     *
+     * @return void
+     */
+    public function testTagsReturn404OnTaskNotExsists()
+    {
+        $this->get('/tag/500')->seeJson()->seeStatusCode(404);
+    }
+    /**
      * Test tags in database is shown by API
      *
      * @return void
@@ -96,9 +105,5 @@ class TagsAPITest extends TestCase
         $data = [ 'title' => $tag->title];
         $this->delete('/tag/' . $tag->id)->notSeeInDatabase('tags',$data);
         $this->get('/tag')->dontSeeJson($data)->seeStatusCode(200);
-    }
-    public function testTagNotFoundErrorCode()
-    {
-        $this->get('/tag/500000000')->seeStatusCode(404);
     }
 }
