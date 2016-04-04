@@ -111,4 +111,14 @@ class TasksAPITest extends TestCase
         $this->delete('/task/' . $task->id)->notSeeInDatabase('tasks',$data);
         $this->get('/task')->dontSeeJson($data)->seeStatusCode(200);
     }
+
+    /**
+     * Test tasks to Authentication With API Token
+     * @group failing
+     * @expectedException
+     */
+    public function testTasksAuthenticationWithAPITokenExpectedReturnLoginPage()
+    {
+        $this->get('/task')->assertRedirectedTo('/auth/login');
+    }
 }
