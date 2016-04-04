@@ -119,6 +119,7 @@ class TasksAPITest extends TestCase
      */
     public function testTasksAuthenticationWithAPITokenExpectedReturnLoginPage()
     {
-        $this->get('/task')->assertRedirectedTo('/auth/login');
+        $user = factory(App\User::class)->create();
+        $this->actingAs($user, 'token')->get('/task')->assertRedirectedTo('/auth/login');
     }
 }
