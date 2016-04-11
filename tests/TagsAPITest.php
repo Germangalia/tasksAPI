@@ -3,6 +3,11 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class TagsAPITest extends TestCase
 {
     use DatabaseMigrations;
+    public function createUser()
+    {
+        $user = factory(App\User::class)->create();
+        return $user;
+    }
     /**
      * A basic functional test example.
      *
@@ -10,7 +15,8 @@ class TagsAPITest extends TestCase
      */
     public function testTagsUseJson()
     {
-        $this->get('/tag')->seeJson()->seeStatusCode(200);
+        $user = $this->createUser();
+        $this->get('/tag?api_token=' . $user->api_token)->seeJson()->seeStatusCode(200);
     }
     /**
      * Test tags in database are listed by API
@@ -19,8 +25,9 @@ class TagsAPITest extends TestCase
      */
     public function testTagsInDatabaseAreListedByAPI()
     {
+        $user = $this->createUser();
         $this->createFakeTags();
-        $this->get('/tag')
+        $this->actingAs($user)->get('/tag')
             ->seeJsonStructure([
                 '*' => [
                     'title'
@@ -34,7 +41,8 @@ class TagsAPITest extends TestCase
      */
     public function testTagsReturn404OnTaskNotExsists()
     {
-        $this->get('/tag/500')->seeJson()->seeStatusCode(404);
+        $user = $this->createUser();
+        $this->actingAs($user)->get('/tag/500')->seeJson()->seeStatusCode(404);
     }
     /**
      * Test tags in database is shown by API
@@ -43,9 +51,9 @@ class TagsAPITest extends TestCase
      */
     public function testTagsInDatabaseAreShownByAPI()
     {
+        $user = $this->createUser();
         $tag = $this->createFakeTag();
-        $this->get('/tag/' . $tag->id)
-            ->seeJsonContains(['title' => $tag->title])
+        $this->actingAs($user)->get('/tag/' . $tag->id)->seeJsonContains(['title' => $tag->title])
             ->seeStatusCode(200);
     }
     /**
@@ -67,6 +75,7 @@ class TagsAPITest extends TestCase
      * @return \App\Tag
      */
     private function createFakeTags($count = 10) {
+        $this->withoutMiddleware();
         foreach (range(0,$count) as $number) {
             $this->createFakeTag();
         }
@@ -78,9 +87,10 @@ class TagsAPITest extends TestCase
      */
     public function testTagsCanBePostedAndSavedIntoDatabase()
     {
+        $user = $this->createUser();
         $data = ['title' => 'Foobar'];
-        $this->post('/tag',$data)->seeInDatabase('tags',$data);
-        $this->get('/tag')->seeJsonContains($data)->seeStatusCode(200);
+        $this->actingAs($user)->post('/tag',$data)->seeInDatabase('tags',$data);
+        $this->actingAs($user)->get('/tag')->seeJsonContains($data)->seeStatusCode(200);
     }
     /**
      * Test tags can be update and see changes on database
@@ -89,10 +99,11 @@ class TagsAPITest extends TestCase
      */
     public function testTagsCanBeUpdatedAndSeeChangesInDatabase()
     {
+        $user = $this->createUser();
         $tag = $this->createFakeTag();
         $data = [ 'title' => 'Learn Laravel'];
-        $this->put('/tag/' . $tag->id, $data)->seeInDatabase('tags',$data);
-        $this->get('/tag')->seeJsonContains($data)->seeStatusCode(200);
+        $this->actingAs($user)->put('/tag/' . $tag->id, $data)->seeInDatabase('tags',$data);
+        $this->actingAs($user)->get('/tag')->seeJsonContains($data)->seeStatusCode(200);
     }
     /**
      * Test tagss can be deleted and not see on database
@@ -101,9 +112,19 @@ class TagsAPITest extends TestCase
      */
     public function testTagsCanBeDeletedAndNotSeenOnDatabase()
     {
+        $user = $this->createUser();
         $tag = $this->createFakeTag();
         $data = [ 'title' => $tag->title];
-        $this->delete('/tag/' . $tag->id)->notSeeInDatabase('tags',$data);
-        $this->get('/tag')->dontSeeJson($data)->seeStatusCode(200);
+        $this->actingAs($user)->delete('/tag/' . $tag->id)->notSeeInDatabase('tags',$data);
+        $this->actingAs($user)->get('/tag')->dontSeeJson($data)->seeStatusCode(200);
+    }
+    /**
+     * Test tag when not auth redirect to /auth/login and see message
+     *
+     * @return void
+     */
+    public function testTagsReturnLoginPageWhenNotAuth()
+    {
+        $this->visit('/tag')->seePageIs('/auth/login')->see("No tens acces a la API");
     }
 }
